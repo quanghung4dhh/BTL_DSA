@@ -1,7 +1,7 @@
 import random
 
 # Cấu hình số lượng dòng muốn tạo
-NUM_LINES = 10000
+NUM_LINES = 20
 FILENAME = "../data/input/test.txt"
 
 # Các từ khóa mẫu để ghép thành đường dẫn
@@ -12,7 +12,7 @@ params = ["Value", "ID", "Name", "Rate", "Min", "Max", "Mode"]
 
 def generate_line():
     # Tạo path ngẫu nhiên: Root/Module/Sub/Param
-    path = f"{random.choice(roots)}/{random.choice(modules)}/{random.choice(sub_modules)}/{random.choice(params)}_{random.randint(1, 100)}"
+    path = f"SystemConfig/{random.choice(roots)}/{random.choice(modules)}/{random.choice(sub_modules)}/{random.choice(params)}_{random.randint(1, 100)}"
     
     # Tạo giá trị ngẫu nhiên
     value = random.randint(0, 9999)
