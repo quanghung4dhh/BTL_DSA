@@ -1,14 +1,11 @@
-# 1. Trình biên dịch và Cờ
+# Makefile đơn giản cho Windows
 CXX = g++
 CXXFLAGS = -Iinclude -Wall -g
 
-# 2. Thiết lập thư mục đầu ra
-BUILD_DIR = build
-TARGET_NAME = btl_dsa
-# Đường dẫn đầy đủ đến file exe: build/config_tree_app.exe
-TARGET = $(BUILD_DIR)/$(TARGET_NAME)
+# Tên file chạy
+TARGET = build/btl_dsa.exe
 
-# 3. Danh sách file nguồn (Source)
+# Danh sách file nguồn
 SRCS = src/main.cpp \
        src/core/string_utils.cpp \
        src/ds/TreeLogic.cpp \
@@ -17,37 +14,17 @@ SRCS = src/main.cpp \
        src/app/config_io.cpp \
        src/app/cli_menu.cpp
 
-# 4. Tạo danh sách file object (.o) tương ứng trong thư mục build
-# Ví dụ: src/main.cpp -> build/src/main.o
-OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
+# Quy tắc build: Gom tất cả build 1 lần (đỡ phải tạo folder .o lằng nhằng)
+all: dir $(TARGET)
 
-# 5. Quy tắc biên dịch file chạy (Link)
-$(TARGET): $(OBJS)
-	@echo "Dang lien ket (Linking)..."
-	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
-	@echo "=========================================="
-	@echo "Build thanh cong! File chay nam tai:"
-	@echo "   $(TARGET).exe"
-	@echo "=========================================="
+$(TARGET):
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $(TARGET)
+	@echo "Build xong! Chay: $(TARGET)"
 
-# 6. Quy tắc biên dịch từng file .cpp thành .o
-# $@: Tên file mục tiêu (build/src/.../file.o)
-# $<: Tên file nguồn (src/.../file.cpp)
-# $(dir $@): Lấy đường dẫn thư mục chứa file .o để tạo folder nếu chưa có
-$(BUILD_DIR)/%.o: %.cpp
-	@mkdir -p $(dir $@)
-	@echo "Dang bien dich: $<"
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# Tạo thư mục build nếu chưa có (lệnh Windows)
+dir:
+	@if not exist build mkdir build
 
-# 7. Lệnh chạy nhanh (gõ: make run)
-run: $(TARGET)
-	./$(TARGET)
-
-# 8. Lệnh dọn dẹp (Xóa toàn bộ thư mục build)
+# Lệnh clean cho Windows
 clean:
-	rm -rf $(BUILD_DIR)
-
-# Hỗ trợ Windows (nếu lệnh rm -rf không chạy được trên CMD thường)
-clean_win:
-	rmdir /s /q $(BUILD_DIR)
+	@if exist build rmdir /s /q build
