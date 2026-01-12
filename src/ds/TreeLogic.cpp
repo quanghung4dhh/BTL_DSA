@@ -1,4 +1,3 @@
-#include "core/common_types.h"//Copy toàn bộ file Node.h vào đây để sử dụng
 #include "ds/TreeLogic.h"       // Include header của chính nó
 #include "core/common_types.h"   // Include nơi chứa struct Node
 #include <iostream>
