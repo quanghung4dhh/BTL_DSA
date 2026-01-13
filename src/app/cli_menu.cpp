@@ -42,7 +42,7 @@ string getLineSafe() {
 // Hàm tách logic Xóa Node phức tạp ra riêng
 // Input: "Device/Module/Sensor" -> Tìm node cha "Device/Module" -> Xóa con "Sensor"
 void handleRemovePath(Node* root) {
-  cout << "Nhap duong dan can xoa (VD: System/Network): ";
+  cout << "Nhap duong dan can xoa (VD: SystemConfig/System/Network): ";
   string path = getLineSafe();
 
   // 1. Tách chuỗi để lấy tên con cần xóa và đường dẫn cha
