@@ -151,7 +151,6 @@ void runApp(Node* root) {
                 value = getLineSafe();
                 
                 setValueByPath(root, path, value);
-                cout << "[Thanh cong] Da cap nhat node.\n";
                 break;
 
             case 4: // Remove

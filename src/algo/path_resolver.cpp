@@ -81,6 +81,7 @@ void setValueByPath(Node* root, const string& path, const string& value) {
       return;
     }
     node->value = value;
+    cout << "[Thanh cong] Da cap nhat node.\n";
   } else {
     // Có thể in log lỗi ở đây nếu muốn
     // cout << "Error: Cannot resolve path " << path << endl;
