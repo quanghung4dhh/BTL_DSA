@@ -150,8 +150,10 @@ void runApp(Node* root) {
         cout << "Nhap gia tri (Value): ";
         value = getLineSafe();
 
-        bool success = setValueByPath(root, path, value);
-        if (success) cout << "[Thanh cong] Da cap nhat node.\n";
+        {
+          bool success = setValueByPath(root, path, value);
+          if (success) cout << "[Thanh cong] Da cap nhat node.\n";
+        }
         break;
 
       case 4:  // Remove
