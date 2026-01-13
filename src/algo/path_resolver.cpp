@@ -70,7 +70,7 @@ Node* ensurePath(Node* root, const string& path) {
   return current;
 }
 
-void setValueByPath(Node* root, const string& path, const string& value) {
+bool setValueByPath(Node* root, const string& path, const string& value) {
   // Tận dụng hàm ensurePath để lấy node đích (nếu chưa có thì nó tự tạo)
   Node* node = ensurePath(root, path);
 
@@ -78,11 +78,12 @@ void setValueByPath(Node* root, const string& path, const string& value) {
     // Nếu là nút cha thì sẽ không được thêm value
     if (node->firstChild != nullptr) {
       cout << "[Loi Logic] Node '" << node->name << "' dang la Node Cha (Module). Khong the gan gia tri!" << endl;
-      return;
+      return false;
     }
     node->value = value;
-    cout << "[Thanh cong] Da cap nhat node.\n";
+    return true;
   } else {
+    return false;
     // Có thể in log lỗi ở đây nếu muốn
     // cout << "Error: Cannot resolve path " << path << endl;
   }

@@ -11,6 +11,6 @@ Node* findNodeByPath(Node* root, const std::string& path);
 Node* ensurePath(Node* root, const std::string& path);
 
 // Gán giá trị cho node theo đường dẫn (tự tạo path nếu thiếu)
-void setValueByPath(Node* root, const std::string& path, const std::string& value);
+bool setValueByPath(Node* root, const std::string& path, const std::string& value);
 
 #endif
