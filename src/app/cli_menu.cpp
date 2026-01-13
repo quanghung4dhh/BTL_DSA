@@ -130,7 +130,13 @@ void runApp(Node* root) {
                     if (result) {
                         cout << "-> Tim thay Node: " << result->name << "\n";
                         cout << "-> Gia tri (Value): " << (result->value.empty() ? "(Empty)" : result->value) << "\n";
-                        if (result->firstChild) cout << "-> Node nay co chua node con.\n";
+                        if (result->firstChild) {
+                          cout << "-> Node nay co chua node con.\n";
+                          cout << "\n--- CAU TRUC CAY CON (SUBTREE) ---\n";
+                          cout << result->name << endl;
+                          printTreePretty(result->firstChild, 1); //In ra cây con
+                          cout << "----------------------------------\n";
+                        }
                         else cout << "-> Day la node la.\n";
                     } else {
                         cout << "[!] Khong tim thay duong dan nay.\n";
