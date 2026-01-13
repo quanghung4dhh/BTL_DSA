@@ -123,7 +123,7 @@ void runApp(Node* root) {
                 break;
 
             case 2: // Query
-                cout << "Nhap duong dan (VD: System/Net/IP): ";
+                cout << "Nhap duong dan (VD: SystemConfig/System/Net/IP): ";
                 path = getLineSafe();
                 {
                     Node* result = findNodeByPath(root, path);
@@ -139,7 +139,7 @@ void runApp(Node* root) {
                 break;
 
             case 3: // Add/Update
-                cout << "Nhap duong dan (VD: System/Limit): ";
+                cout << "Nhap duong dan (VD: SystemConfig/System/Limit): ";
                 path = getLineSafe();
                 cout << "Nhap gia tri (Value): ";
                 value = getLineSafe();
