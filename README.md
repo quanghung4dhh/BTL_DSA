@@ -33,7 +33,9 @@ NUM_LINES = 20
 ```
 ### 4. Chạy file python để tạo dữ liệu
 ```bash
-python scripts/generate.py
+cd scripts
+python generate.py
+cd ..
 ```
 File dữ liệu `test.txt` sẽ được tạo ra trong thư mục `data/input/`
 ### 5. Chạy chương trình chính
@@ -46,6 +48,7 @@ Sau khi chạy chương trình cần nạp dữ liệu đã tạo bằng cách c
 2. Nếu chạy thẳng trực tiếp file `btl_dsa.exe` thì phải nhập đường dẫn là `../data/input/test.txt`
 3. Sau khi nạp xong dữ liệu thì có thể dùng các option khác với dữ liệu đã nạp
 # ENJOY!
+
 
 
 
