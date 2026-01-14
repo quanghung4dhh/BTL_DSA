@@ -7,8 +7,8 @@
 struct Node {
     std::string name;
     std::string value;     
-    Node* firstChild;   // Con đầu tiên (Head of list con)
-    Node* nextSibling;  // Người em kế tiếp (Next trong list con)
+    Node* firstChild;   // Con đầu tiên (Head of list con) Singly linked list
+    Node* nextSibling;  // Người em kế tiếp (Next trong list con) Singly linked list
 
     // Constructor
     Node(std::string n, std::string v = "") {

@@ -4,13 +4,17 @@
 
 using namespace std;
 
+//Biến chuỗi thành mảng
+//VD: A/B/C/D => [A, B, C, D] 
+
 // Hàm cắt chuỗi
 vector<string> splitString(const string& str, char delimiter) {
-    vector<string> tokens;
-    string token;
-    stringstream ss(str);
+    vector<string> tokens;  // Mảng xuất ra kết quả
+    string token;           // Biến tạm chứa chuỗi cắt ra
+    stringstream ss(str);   // Biến chuỗi vào thành dòng sử dụng để getline
 
     // Dùng getline để đọc từng phần dựa trên delimiter
+    // getline sẽ đọc dòng ss, lưu vào token, ngăn cách với nhau bằng delimiter
     while (getline(ss, token, delimiter)) {
         // Trước khi thêm vào, nên trim luôn để sạch đẹp
         string cleanToken = trimString(token);
