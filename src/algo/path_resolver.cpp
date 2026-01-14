@@ -8,11 +8,12 @@
 
 using namespace std;
 
+//Hàm này tìm kiếm Nút theo path nhập vào
 Node* findNodeByPath(Node* root, const string& path) {
   if (root == nullptr || path.empty()) return nullptr;
 
   // SỬ DỤNG VECTOR thay vì mảng động để không lo memory leak
-  vector<string> parts = splitString(path, '/');
+  vector<string> parts = splitString(path, '/'); //Lưu thành mảng các phần từ chuỗi nhập vào
 
   Node* current = root;
 
@@ -34,10 +35,13 @@ Node* findNodeByPath(Node* root, const string& path) {
   return current;
 }
 
+//Hàm này là sẽ từ path nhập vào, nó sẽ tạo ra cây tương ứng sao cho path nhập vào luôn tồn tại
+//Nghĩa là: Nếu path nhập vào đã tồn tại thì thôi, không làm gì hết
+// Còn nếu path nhập vào chưa tồn tại, sẽ tạo các nút theo path đó
 Node* ensurePath(Node* root, const string& path) {
-  if (root == nullptr || path.empty()) return nullptr;
+  if (root == nullptr || path.empty()) return nullptr; // Nếu nút gốc rỗng
 
-  vector<string> parts = splitString(path, '/');
+  vector<string> parts = splitString(path, '/'); //Mảng lưu các phần tử từ chuỗi path
 
   Node* current = root;
 
@@ -60,14 +64,14 @@ Node* ensurePath(Node* root, const string& path) {
         current->value = "";  // XÓA GIÁ TRỊ CŨ
       }
       child = createNode(parts[i], "");  // Tạo node mới, value rỗng
-      addChild(current, child);
+      addChild(current, child); //Thêm con vào
     }
 
     // Đi xuống tầng tiếp theo
     current = child;
   }
 
-  return current;
+  return current; //Trả về con cuối cùng của path
 }
 
 bool setValueByPath(Node* root, const string& path, const string& value) {
@@ -78,12 +82,12 @@ bool setValueByPath(Node* root, const string& path, const string& value) {
     // Nếu là nút cha thì sẽ không được thêm value
     if (node->firstChild != nullptr) {
       cout << "[Loi Logic] Node '" << node->name << "' dang la Node Cha (Module). Khong the gan gia tri!" << endl;
-      return false;
+      return false; //Trả về false ngay
     }
-    node->value = value;
-    return true;
+    node->value = value; //Đặt value cho nút lá
+    return true;  // Trả về true là thành công
   } else {
-    return false;
+    return false; //Có lỗi nên trả về false
     // Có thể in log lỗi ở đây nếu muốn
     // cout << "Error: Cannot resolve path " << path << endl;
   }
