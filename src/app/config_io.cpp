@@ -69,7 +69,7 @@ bool saveConfigFile(const string& filepath, Node* root) {
     }
 
     // 1. Lấy toàn bộ danh sách đường dẫn từ cây
-    vector<string> allLines;
+    vector<string> allLines; // Mảng lưu các đường dẫn từ cây
     // Gọi hàm collectAllPaths (đã viết ở module tree_traversal)
     collectAllPaths(root, "", allLines); 
 

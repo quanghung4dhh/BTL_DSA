@@ -49,23 +49,24 @@ void handleRemovePath(Node* root) {
   // Ví dụ: "A/B/C" -> ParentPath: "A/B", ChildName: "C"
   size_t lastSlash = path.find_last_of('/');
 
-  string parentPath;
-  string childName;
-  Node* parentNode = nullptr;
+  string parentPath; // Biến lưu đường dẫn nút cha
+  string childName;   // Biến lưu tên nút con
+  Node* parentNode = nullptr; //Biến lưu node cha tìm thấy từ đường dẫn
 
+  //Đây là trường hợp chuỗi nhập vào không có "/" 
   if (lastSlash == string::npos) {
     // Trường hợp xóa node ngay dưới root (VD: "System")
     // Parent chính là root hiện tại (theo logic của bạn root là Node ảo hoặc tên hệ thống)
     // Tuy nhiên hàm removeChild cần parent cụ thể.
     // Giả sử path nhập vào là con trực tiếp của root:
-    parentNode = root;
-    childName = path;
+    parentNode = root; //Nút cho là root luôn
+    childName = path; //Nút con là path
   } else {
-    parentPath = path.substr(0, lastSlash);
-    childName = path.substr(lastSlash + 1);
+    parentPath = path.substr(0, lastSlash); //Nút cha từ trước dấu "/" cuối cùng trở lên
+    childName = path.substr(lastSlash + 1); //Nút con là phần còn lại
 
     // Tìm node cha
-    parentNode = findNodeByPath(root, parentPath);
+    parentNode = findNodeByPath(root, parentPath); //Tìm nút cha từ đường dẫn
   }
 
   if (parentNode == nullptr) {
@@ -74,7 +75,7 @@ void handleRemovePath(Node* root) {
   }
 
   // Gọi hàm từ module DS
-  bool result = removeChild(parentNode, childName);
+  bool result = removeChild(parentNode, childName); // Gọi hàm xóa nút
   if (result) {
     cout << "[Thanh cong] Da xoa node: " << childName << endl;
   } else {
