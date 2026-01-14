@@ -46,7 +46,7 @@ Node* findChildByName(Node* parent, string name) {
     return nullptr; // Đi hết danh sách mà không thấy
 }
 
-// 4. Hàm hủy cây (Đệ quy xóa sạch sẽ)
+// 4. Hàm hủy cây (Đệ quy xóa sạch sẽ), Đệ quy xóa tất cả các con trước rồi mưới xóa chính nó
 void freeTree(Node* root) {
     if (root == nullptr) return;
 
